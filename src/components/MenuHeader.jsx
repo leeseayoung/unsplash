@@ -1,22 +1,22 @@
 import styled from "styled-components";
 
-const MenuHeader = () => {
-  const menuItems = ["사진", "일러스트", "Unsplash+"];
-  const menuItem = [
-    "3D 렌더링",
-    "마리",
-    "건축 및 인테리어",
-    "실험적인",
-    "패션 & 뷰티",
-    "필름",
-    "식음료",
-    "자연",
-    "사람",
-    "스포츠",
-    "여행하다",
-    "라이징 스타",
-  ];
+const menuItems = ["사진", "일러스트", "Unsplash+"];
+const menuItem = [
+  "3D 렌더링",
+  "마리",
+  "건축 및 인테리어",
+  "실험적인",
+  "패션 & 뷰티",
+  "필름",
+  "식음료",
+  "자연",
+  "사람",
+  "스포츠",
+  "여행하다",
+  "라이징 스타",
+];
 
+const MenuHeader = () => {
   return (
     <Nav>
       <Menu>

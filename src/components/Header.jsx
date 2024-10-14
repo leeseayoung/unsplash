@@ -2,11 +2,12 @@ import styled from "styled-components";
 import logo from "../assets/logo.svg";
 import menu from "../assets/menu.svg";
 import searchIcon from "../assets/search.svg";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <HeaderContainer>
-      <Logo>
+      <Logo to="/">
         <img src={logo} alt="로고" />
       </Logo>
       <SearchInput placeholder="사진과 일러스트 검색" />
@@ -28,7 +29,7 @@ const HeaderContainer = styled.header`
   padding: 10px 20px;
 `;
 
-const Logo = styled.div`
+const Logo = styled(Link)`
   margin-right: 16px;
   font-size: 24px;
   font-weight: bold;
@@ -41,7 +42,7 @@ const SearchInput = styled.input`
   padding: 12px;
   padding-left: 40px;
   font-size: 14px;
-  border: 1px solid #ddd;
+  border: 1px solid #dddddd;
   border-radius: 20px;
   flex: 1;
   height: 15px;
