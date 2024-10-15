@@ -2,15 +2,32 @@ import styled from "styled-components";
 import logo from "../assets/logo.svg";
 import menu from "../assets/menu.svg";
 import searchIcon from "../assets/search.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Header = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+
+    navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
+  };
+
   return (
     <HeaderContainer>
       <Logo to="/">
         <img src={logo} alt="로고" />
       </Logo>
-      <SearchInput placeholder="사진과 일러스트 검색" />
+      <SearchForm onSubmit={handleSearchSubmit}>
+        <SearchInput
+          type="text"
+          placeholder="사진과 일러스트 검색"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </SearchForm>
       <NavList>
         <NavItem>탐색</NavItem>
         <NavItem>로그인</NavItem>
@@ -38,14 +55,19 @@ const Logo = styled(Link)`
   }
 `;
 
+const SearchForm = styled.form`
+  flex-grow: 1;
+`;
+
 const SearchInput = styled.input`
   padding: 12px;
   padding-left: 40px;
   font-size: 14px;
   border: 1px solid #dddddd;
   border-radius: 20px;
-  flex: 1;
-  height: 15px;
+  width: 100%;
+  height: 40px;
+  box-sizing: border-box;
   background-color: #f0f0f0;
   background: #f0f0f0 url(${searchIcon}) no-repeat left 12px center/ 20px auto;
 `;
