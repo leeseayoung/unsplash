@@ -1,27 +1,34 @@
-import { useQuery } from "@tanstack/react-query";
-import { customAxios } from "../api/axios";
 import { useSearchParams } from "react-router-dom";
-
-const fetchSearch = async (search) => {
-  const response = await customAxios.get(`/search/photos?query=${search}`);
-  return response.data;
-};
+import { useInView } from "react-intersection-observer";
+import styled from "styled-components";
+import { useEffect } from "react";
+import useInfiniteSearchPhotos from "../hooks/useInfiniteSearchPhotos";
 
 const Search = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get("q");
+  const [ref, inView] = useInView();
 
-  const { data } = useQuery({
-    queryKey: [`search`, searchParams.get("q")],
-    queryFn: () => fetchSearch(searchParams.get("q")),
-  });
+  const { data, fetchNextPage } = useInfiniteSearchPhotos(query);
+
+  useEffect(() => {
+    if (inView) {
+      fetchNextPage();
+    }
+  }, [inView]);
 
   return (
     <div>
-      {data?.results?.map((item) => {
+      {data?.pages?.map((item) => {
         return <img key={item.urls.regular} src={item.urls.regular} />;
       })}
+      <Div ref={ref} />
     </div>
   );
 };
 
 export default Search;
+
+const Div = styled.div`
+  height: 30px;
+`;
