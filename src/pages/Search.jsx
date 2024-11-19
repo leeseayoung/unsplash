@@ -18,17 +18,53 @@ const Search = () => {
   }, [inView]);
 
   return (
-    <div>
-      {data?.pages?.map((item) => {
-        return <img key={item.urls.regular} src={item.urls.regular} />;
-      })}
-      <Div ref={ref} />
-    </div>
+    <Container>
+      <ImageGrid>
+        {data?.pages?.map((item) => (
+          <ImageColumn key={item.urls.regular}>
+            <ImageWrapper>
+              <Image src={item.urls.regular} alt={item.alt_description || ""} />
+            </ImageWrapper>
+          </ImageColumn>
+        ))}
+      </ImageGrid>
+      <LoadingTrigger ref={ref} />
+    </Container>
   );
 };
 
-export default Search;
-
-const Div = styled.div`
-  height: 30px;
+const Container = styled.div`
+  width: 100%;
+  padding: 0 20px;
 `;
+
+const ImageGrid = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+`;
+
+const ImageColumn = styled.div`
+  width: calc(33.3333% - 5.3333px);
+`;
+
+const ImageWrapper = styled.div`
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 4px;
+  overflow: hidden; // 이미지가 컨테이너를 벗어나지 않도록
+`;
+
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover; // 이미지 비율 유지하면서 컨테이너 채우기
+`;
+
+const LoadingTrigger = styled.div`
+  height: 30px;
+  width: 100%;
+`;
+
+export default Search;
