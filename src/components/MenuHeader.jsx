@@ -18,29 +18,21 @@ const menuItem = [
 
 const MenuHeader = () => {
   return (
-    <StickyWrapper>
-      <Nav>
-        <Menu>
-          {menuItems.map((item) => (
-            <MenuItem key={item}>{item}</MenuItem>
-          ))}
-        </Menu>
-        <Line />
-        <Menu>
-          {menuItem.map((item) => (
-            <MenuItem key={item}>{item}</MenuItem>
-          ))}
-        </Menu>
-      </Nav>
-    </StickyWrapper>
+    <Nav>
+      <Menu>
+        {menuItems.map((item) => (
+          <MenuItem key={item}>{item}</MenuItem>
+        ))}
+      </Menu>
+      <Line />
+      <Menu>
+        {menuItem.map((item) => (
+          <MenuItem key={item}>{item}</MenuItem>
+        ))}
+      </Menu>
+    </Nav>
   );
 };
-
-const StickyWrapper = styled.div`
-  position: sticky;
-  top: 63px;
-  background-color: white;
-`;
 
 const Nav = styled.nav`
   display: flex;

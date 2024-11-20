@@ -39,10 +39,6 @@ const Header = () => {
 };
 
 const HeaderContainer = styled.header`
-  position: sticky;
-  top: 0px;
-  z-index: 100;
-  background-color: white; // 배경색을 추가하여 내용이 헤더 뒤로 비치지 않게 함
   display: flex;
   justify-content: space-between;
   align-items: center;
