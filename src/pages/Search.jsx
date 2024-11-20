@@ -6,6 +6,7 @@ import useInfiniteSearchPhotos from "../hooks/useInfiniteSearchPhotos";
 import DownloadButton from "../components/buttons/DownloadButton";
 import LikeButton from "../components/buttons/LikeButton";
 import PlusButton from "../components/buttons/PlusButton";
+import Avatar from "../components/common/Avatar";
 
 const Search = () => {
   const [searchParams] = useSearchParams();
@@ -28,6 +29,13 @@ const Search = () => {
             <ImageWrapper>
               <Image src={item.urls.regular} alt={item.alt_description || ""} />
               <ButtonOverlay>
+                <UserInfo>
+                  <Avatar
+                    name={item.user.name}
+                    src={item.user.profile_image.small}
+                  />
+                  <UserName>{item.user.name}</UserName>
+                </UserInfo>
                 <TopButtonContainer>
                   <LikeButton />
                   <PlusButton />
@@ -70,6 +78,21 @@ const ButtonOverlay = styled.div`
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
   padding: 16px;
+`;
+
+const UserInfo = styled.div`
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+
+const UserName = styled.span`
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
 `;
 
 const TopButtonContainer = styled.div`
