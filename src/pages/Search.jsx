@@ -3,7 +3,9 @@ import { useInView } from "react-intersection-observer";
 import styled from "styled-components";
 import { useEffect } from "react";
 import useInfiniteSearchPhotos from "../hooks/useInfiniteSearchPhotos";
-import DownloadButton from "../components/DownloadButton";
+import DownloadButton from "../components/buttons/DownloadButton";
+import LikeButton from "../components/buttons/LikeButton";
+import PlusButton from "../components/buttons/PlusButton";
 
 const Search = () => {
   const [searchParams] = useSearchParams();
@@ -26,7 +28,13 @@ const Search = () => {
             <ImageWrapper>
               <Image src={item.urls.regular} alt={item.alt_description || ""} />
               <ButtonOverlay>
-                <DownloadButton />
+                <TopButtonContainer>
+                  <LikeButton />
+                  <PlusButton />
+                </TopButtonContainer>
+                <BottomButtonContainer>
+                  <DownloadButton />
+                </BottomButtonContainer>
               </ButtonOverlay>
             </ImageWrapper>
           </ImageColumn>
@@ -59,12 +67,23 @@ const ButtonOverlay = styled.div`
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.3);
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
   padding: 16px;
+`;
+
+const TopButtonContainer = styled.div`
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  gap: 8px;
+`;
+
+const BottomButtonContainer = styled.div`
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
 `;
 
 const ImageWrapper = styled.div`
