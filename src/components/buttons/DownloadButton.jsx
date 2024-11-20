@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import arrowDown from "../assets/hover_img/arrow-down.svg";
+import arrowDown from "../../assets/hover_img/arrow-down.svg";
 
 const DownloadButton = () => {
   return (
@@ -10,20 +10,24 @@ const DownloadButton = () => {
 };
 
 const StyledButton = styled.button`
-  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 32px;
   background-color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 14px;
+  padding: 0;
 
   &:hover {
     background-color: #f0f0f0;
   }
 
   img {
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
   }
 `;
 
