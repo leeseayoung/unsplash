@@ -3,7 +3,7 @@ import { useInView } from "react-intersection-observer";
 import styled from "styled-components";
 import { useEffect } from "react";
 import useInfiniteSearchPhotos from "../hooks/useInfiniteSearchPhotos";
-import Button from "../components/Button";
+import DownloadButton from "../components/DownloadButton";
 
 const Search = () => {
   const [searchParams] = useSearchParams();
@@ -26,7 +26,7 @@ const Search = () => {
             <ImageWrapper>
               <Image src={item.urls.regular} alt={item.alt_description || ""} />
               <ButtonOverlay>
-                <Button />
+                <DownloadButton />
               </ButtonOverlay>
             </ImageWrapper>
           </ImageColumn>
@@ -60,10 +60,11 @@ const ButtonOverlay = styled.div`
   bottom: 0;
   background: rgba(0, 0, 0, 0.3);
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
+  align-items: flex-end;
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
+  padding: 16px;
 `;
 
 const ImageWrapper = styled.div`
