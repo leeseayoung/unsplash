@@ -42,6 +42,7 @@ const Nav = styled.nav`
   height: 56px;
   box-shadow: 0 1px rgba(1, 0, 0, 0.12);
 `;
+
 const Line = styled.div`
   width: 1px;
   height: 32px;
