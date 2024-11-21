@@ -91,28 +91,27 @@ const UserInfo = styled.div`
 
 const UserName = styled.span`
   color: white;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
 `;
 
 const TopButtonContainer = styled.div`
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 20px;
+  right: 20px;
   display: flex;
   gap: 8px;
 `;
 
 const BottomButtonContainer = styled.div`
   position: absolute;
-  bottom: 16px;
-  right: 16px;
+  bottom: 20px;
+  right: 20px;
 `;
 
 const ImageWrapper = styled.div`
   width: 100%;
   aspect-ratio: 1 / 1;
-  border-radius: 4px;
   overflow: hidden;
   position: relative;
   cursor: pointer;
