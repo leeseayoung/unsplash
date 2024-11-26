@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import MenuHeader from "./MenuHeader";
 import styled from "styled-components";
+import ImageShow from "./ImageShow";
 
 const Layout = () => {
   return (
@@ -11,6 +12,7 @@ const Layout = () => {
         <MenuHeader />
       </StickyHeader>
       <Outlet />
+      <ImageShow />
     </div>
   );
 };
