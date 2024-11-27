@@ -2,10 +2,10 @@ import styled from "styled-components";
 import LikeButton from "./buttons/LikeButton";
 import PlusButton from "./buttons/PlusButton";
 
-const ImageShow = ({ onClose }) => {
+const ImageShow = () => {
   return (
     <>
-      <Overlay onClick={onClose} />
+      <Overlay />
       <Container>
         <Header>
           <ProfileSection>
@@ -13,8 +13,12 @@ const ImageShow = ({ onClose }) => {
             <UserName>사용자 이름</UserName>
           </ProfileSection>
           <ButtonGroup>
-            <LikeButton />
-            <PlusButton />
+            <LikeButtonWrapper>
+              <LikeButton />
+            </LikeButtonWrapper>
+            <PlusButtonWrapper>
+              <PlusButton />
+            </PlusButtonWrapper>
             <DownloadButton>
               <DownloadIcon>
                 <path d="M19 11h-1.5V7.5C17.5 4.5 15 2 12 2S6.5 4.5 6.5 7.5V11H5c-0.6 0-1 0.4-1 1v9c0 0.6 0.4 1 1 1h14c0.6 0 1-0.4 1-1v-9c0-0.6-0.4-1-1-1ZM8.5 7.5C8.5 5.6 10.1 4 12 4s3.5 1.6 3.5 3.5V11h-7V7.5Z" />
@@ -52,7 +56,7 @@ const Container = styled.div`
   height: 90vh;
   background: white;
   z-index: 1000;
-  border-radius: 8px;
+  border-radius: 8px 8px 0 0;
   display: flex;
   flex-direction: column;
 `;
@@ -128,10 +132,24 @@ const DownloadIcon = styled.svg.attrs({
   stroke-linejoin: round;
 `;
 
+const LikeButtonWrapper = styled.div`
+  button {
+    border: 1px solid #d1d1d1;
+    background: white;
+    transition: border-color 0.2s ease;
+    &:hover {
+      background: white;
+      border: 0.5px solid black;
+    }
+  }
+`;
+
+const PlusButtonWrapper = styled(LikeButtonWrapper)``;
+
 const Main = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #5c475c;
+  /* background: #5c475c; */
 `;
